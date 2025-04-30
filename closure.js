@@ -37,3 +37,27 @@ object.getCounter();
 // getting the value of the current counter.
 
 //outputs:: the number added is 5, the number subtracted is 2, 3 count
+
+//creating a js to count each time the function is being called.
+//this function adds one to the number each time the function is called
+
+//creating a scope
+
+function scope(n) {
+  let p = n;
+  //empty counter to check the number of times function is called
+  let counter = 0;
+
+  function inner() {
+    let result = p + counter++;
+    // counter++ same as counter +=1, but after the initial value is initiated
+    return result;
+  }
+  //returning inner as an method of object function to call it easily
+  return { inner };
+}
+
+const main = scope(3);
+console.log(main.inner()); //output 3
+console.log(main.inner()); //output 4
+console.log(main.inner()); //output 5
